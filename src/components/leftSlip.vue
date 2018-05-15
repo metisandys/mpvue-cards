@@ -3,6 +3,7 @@
     <div class="items">
       <div class="item" @touchstart="touchS" @touchmove="touchM" :style="deleteSlider">
         <div class="txt">{{itemInfo.text}}</div>
+        <!-- <slot name="content"></slot> -->
       </div>
       <div class="remove" @click="confirmDel">删除</div>
     </div>
@@ -87,7 +88,7 @@ export default {
 <style lang="less">
 .left-slip-wrap{
   width: 100%;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   .items{  
     width: 100%;
     height:100px;
