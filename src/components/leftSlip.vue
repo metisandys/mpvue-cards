@@ -1,10 +1,10 @@
 <template>
   <div class="left-slip-wrap">
     <div class="items">
-      <div class="item" @touchstart="touchS" @touchmove="touchM" @touchend="touchE" :style="deleteSlider">
-        <div class="txt">{{index}}</div>
+      <div class="item" @touchstart="touchS" @touchmove="touchM" :style="deleteSlider">
+        <div class="txt">{{itemInfo.text}}</div>
       </div>
-      <div class="remove" ref="remove">删除</div>
+      <div class="remove" @click="confirmDel">删除</div>
     </div>
   </div>
 </template>
@@ -12,6 +12,11 @@
 <script>
 export default {
   name: 'LeftSlip',
+  props: {
+    itemInfo: {
+      type: Object
+    }
+  },
   data () {
     return {
       index: '嘻嘻哈哈',
@@ -56,7 +61,7 @@ export default {
           }
         }
       }
-    }
+    },
     // touchE (ev) {
     //   const wd = 100 // 同上个方法
     //   console.log(ev)
@@ -72,15 +77,16 @@ export default {
     //     }
     //   }
     // }
+    confirmDel () {
+      console.log('删除成功')
+    }
   }
 }
 </script>
 
 <style lang="less">
 .left-slip-wrap{
-  height: 64px;
   width: 100%;
-  margin: 0 auto;
   box-sizing: border-box; 
   .items{  
     width: 100%;
@@ -93,7 +99,7 @@ export default {
       right: 0;
       top: 0;
       bottom: 0;
-      background:green;
+      background: #ffffff;
       z-index: 100;
       //  设置过渡动画
       transition: 0.3s
@@ -109,9 +115,6 @@ export default {
       text-align: center;
       font-size: 32px;
       line-height: 100px;
-    }
-    .item:last-child{
-      border-bottom: 2rpx solid #eee;
     }
   }
 }

@@ -1,31 +1,40 @@
 <template>
   <div class="cards-list-wrap">
-    <LeftSlip></LeftSlip>
+    <div class="list-item" v-for="(item, index) in list" :key="index">
+      <LeftSlip :itemInfo="item"></LeftSlip>
+    </div>
   </div>
 </template>
 
 <script>
-import card from '@/components/card'
 import LeftSlip from '@/components/leftSlip'
 
 export default {
   data () {
     return {
-      motto: 'Hello World',
-      userInfo: {}
+      list: [
+        {
+          text: '嘻嘻哈哈'
+        },
+        {
+          text: '呵呵嘻嘻'
+        },
+        {
+          text: '哈哈呵呵'
+        }
+      ]
     }
   },
 
   components: {
-    card,
     LeftSlip
   },
 
   methods: {
-    bindViewTap () {
-      const url = '../logs/main'
-      wx.navigateTo({ url })
-    },
+    // bindViewTap () {
+    //   const url = '../logs/main'
+    //   wx.navigateTo({ url })
+    // },
     getUserInfo () {
       // 调用登录接口
       wx.login({
@@ -37,10 +46,10 @@ export default {
           })
         }
       })
-    },
-    clickHandle (msg, ev) {
-      console.log('clickHandle:', msg, ev)
     }
+    // clickHandle (msg, ev) {
+    //   console.log('clickHandle:', msg, ev)
+    // }
   },
 
   created () {
@@ -52,5 +61,8 @@ export default {
 
 <style lang="less">
 .cards-list-wrap{
+  .list-item{
+    border-bottom: 1px solid #cccccc;
+  }
 }
 </style>
